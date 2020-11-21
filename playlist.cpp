@@ -39,9 +39,10 @@ void playlist :: repeat(){
 
 void playlist::print(){
   int n = 1;
-  while (head != NULL){
-      cout << n << ") " << head->song << endl;
-      head = head->next;
+  node* temp = head;
+  while (temp != NULL){
+      cout << n << ") " << temp->song << endl;
+      temp = temp->next;
       n++;
   }
   if (size == 0){
@@ -113,6 +114,19 @@ void playlist::add(int index, track sng) {
         temp->next->prev = temp;
     }
 }
+
+/*
+track playlist::findTrack(int index) {
+    node* temp = head;
+    for (int i = 0; i < index ; ++i) {
+        temp = temp->next;
+    }
+    if (temp != NULL){
+        return temp->song;
+    }
+    else
+        return NULL; // connot return NULL smh
+} */
 
 track playlist::getLast(){
   return tail->song;

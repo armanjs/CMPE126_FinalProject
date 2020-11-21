@@ -36,7 +36,7 @@ int main() {
 
   printJukebox();
   cout << plst.getLast();
-  //cout << plst.getFirst(); // head is lost smh
+  cout << plst.getFirst();
 
 	return 0;
 }

@@ -45,6 +45,7 @@ public:
   void add(int index, track sng);
   track getLast();
   track getFirst();
+  track findTrack(int index);
 
 };
 
