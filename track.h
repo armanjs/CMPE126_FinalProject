@@ -9,7 +9,6 @@
 #define TRACK_H_
 #include <iostream>
 #include <string>
-#include <stdlib.h>
 
 using namespace std;
 
@@ -17,11 +16,12 @@ class track {
     string name;
     string artist;
     string album;
+    int year;
     double duration;
 
 public:
     track(); // default constructor
-    track(string name, string artist, string alb, double duration); // constructor
+    track(string name, string artist, string alb, int y, double duration); // constructor
 
     friend ostream& operator<<(ostream& ofs, const track& obj);
 };

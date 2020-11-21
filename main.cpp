@@ -17,13 +17,13 @@ using namespace std;
 void printJukebox();
 
 int main() {
-  track song1 ("woman", "John lenon", "Double fantasy", 3.32);
+  track song1 ("woman", "John lenon", "Double fantasy", 1980, 3.32);
 
-  track song2 ("Last Chrismas", "Wham", "single", 4.23);
+  track song2 ("Last Christmas", "Wham", "single", 1984, 4.23);
 
-  track song3 ("Take you dancing", "Jason Derulo", "single", 3.11);
+  track song3 ("Take you dancing", "Jason Derulo", "single", 2020, 3.11);
 
-  track song4 ("Night Fever", "Bee Gees", "Greatest", 3.32);
+  track song4 ("Night Fever", "Bee Gees", "Greatest", 1979, 3.32);
   
   playlist plst;
   plst.addFirst(song1);
