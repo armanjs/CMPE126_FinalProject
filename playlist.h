@@ -29,7 +29,7 @@ class playlist{
 	node* tail;
 
 public:
-	int count = 0;
+	int size = 0;
 	track current;
 
 	playlist();
@@ -40,7 +40,9 @@ public:
 	void shuffle();
 	void repeat();
 	void print(); //Print playlist
-  void add(track song);
+  void addFirst(track song);
+  track getLast();
+  track getFirst();
 
 };
 

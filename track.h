@@ -14,16 +14,17 @@
 using namespace std;
 
 class track {
-	string name;
-	string artist;
-	string album;
-	double duration;
+    string name;
+    string artist;
+    string album;
+    double duration;
 
 public:
-	track();
-	track(string name, string artist, string alb, double duration);
+    track(); // default constructor
+    track(string name, string artist, string alb, double duration); // constructor
 
-	friend ostream& operator<<(ostream& ofs, const track& obj);
+    friend ostream& operator<<(ostream& ofs, const track& obj);
 };
+
 
 #endif /* TRACK_H_ */

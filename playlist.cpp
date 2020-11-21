@@ -10,7 +10,7 @@
 playlist :: playlist(){
 	head = NULL;
 	tail = NULL;
-	count = 0;
+	size = 0;
 }
 
 void playlist :: queue(track song){
@@ -38,34 +38,42 @@ void playlist :: repeat(){
 }
 
 void playlist::print(){
-    int count = 1;
-    while (head != NULL){
-        cout << count << ") " << head->song << endl << endl;
-        head = head->next;
-        count++;
-    }
-    if (count == 0){
-        cout << "List is empty." << endl;
-    }
+  int n = 1;
+  while (head != NULL){
+      cout << n << ") " << head->song << endl;
+      head = head->next;
+      n++;
+  }
+  if (size == 0){
+      cout << "List is empty." << endl;
+  }
 }
 
-void playlist::add(track sng){
-    // create a new node
-    node* newNode = new node;
-    // set the current node to stock
-    newNode->song = sng;
-    // link the newNode with the head
-    newNode->next = head;
-    // now head points to newNode
-    head = newNode;
-    // increase list size
-    count++;
-    // if the new node is the only node in the list
-    if (tail == NULL){
-        tail = head;
-    }
-    // update the head previous
-    if (head != tail){
-        head->next->prev = head;
-    }
+void playlist::addFirst(track sng){
+  // create a new node
+  node* newNode = new node;
+  // set the current node to stock
+  newNode->song = sng;
+  // link the newNode with the head
+  newNode->next = head;
+  // now head points to newNode
+  head = newNode;
+  // increase list size
+  size++;
+  // if the new node is the only node in the list
+  if (tail == NULL){
+      tail = head;
+  }
+  // update the head previous
+  if (head != tail){
+      head->next->prev = head;
+  }
+}
+
+track playlist::getLast(){
+  return tail->song;
+}
+
+track playlist::getFirst(){
+  return head->song;
 }

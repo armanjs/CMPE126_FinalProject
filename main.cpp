@@ -22,14 +22,19 @@ int main() {
   track song2 ("Last Chrismas", "Wham", "single", 4.23);
 
   track song3 ("Take you dancing", "Jason Derulo", "single", 3.11);
+
+  track song4 ("Night Fever", "Bee Gees", "Greatest", 3.32);
+  
   playlist plst;
-  plst.add(song1);
-  plst.add(song2);
-  plst.add(song3);
+  plst.addFirst(song1);
+  plst.addFirst(song2);
+  plst.addFirst(song3);
+  plst.addFirst(song4);
 
   plst.print();
 
   printJukebox();
+  cout << plst.getLast();
 
 	return 0;
 }
