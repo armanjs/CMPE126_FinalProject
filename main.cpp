@@ -30,6 +30,7 @@ int main() {
   plst.addFirst(song2);
   plst.addFirst(song3);
   plst.addFirst(song4);
+  plst.add(5, song2);
 
   plst.print();
 

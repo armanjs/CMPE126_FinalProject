@@ -33,14 +33,16 @@ public:
 	track current;
 
 	playlist();
-	void queue(track song);
-	void skip(track song);
-	void move(track song, int pos); //moves song
+	void queue(track sng);
+	void skip(track sng);
+	void move(track sng, int pos); //moves song
 	void previous();
 	void shuffle();
 	void repeat();
 	void print(); //Print playlist
-  void addFirst(track song);
+  void addFirst(track sng);
+  void addLast(track sng);
+  void add(int index, track sng);
   track getLast();
   track getFirst();
 
