@@ -4,6 +4,7 @@ track :: track(){
     name = "";
     artist = "";
     album = "";
+    year = 0;
     duration = 0;
 }
 

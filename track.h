@@ -1,7 +1,7 @@
 /*
  * song.h
  * Created on: Nov 11, 2020
- *      Author: julianneto
+ *      Author: julianneto and armansadeghi
  */
 
 // NODE CLASS FOR TRACK/SONGS
@@ -17,14 +17,13 @@ class track {
     string artist;
     string album;
     int year;
-    double duration;
 
 public:
+    double duration;
     track(); // default constructor
     track(string name, string artist, string alb, int y, double duration); // constructor
 
     friend ostream& operator<<(ostream& ofs, const track& obj);
 };
-
 
 #endif /* TRACK_H_ */
