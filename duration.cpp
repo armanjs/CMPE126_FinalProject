@@ -3,7 +3,11 @@
 
 // overload the "<<" operator
 ostream &operator << (ostream& output, const duration& dur){
-    output << dur.minute << " : " << dur.second << endl;
+    if (dur.second < 10){
+        output << dur.minute << " : 0" << dur.second << endl;
+    }
+    else
+        output << dur.minute << " : " << dur.second << endl;
     return output;
 }
 
@@ -28,7 +32,7 @@ duration::duration() { // define the default constructor
 
 duration::duration(int m, int s) {
   setMinute(m);
-  second = 0;
+  setSecond(s);
 }
 
 // define the setters

@@ -1,19 +1,21 @@
 #include "track.h"
+#include "duration.h"
 
 track :: track(){
     name = "";
     artist = "";
     album = "";
     year = 0;
-    duration = 0;
+    duration();
 }
 
-track :: track(string n, string a, string alb, int y, double dur){
+track :: track(string n, string a, string alb, int y, int min, int sec){
     name = n;
     artist = a;
     album = alb;
     year = y;
-    duration = dur;
+    time.setSecond(sec);
+    time.setMinute(min);
 }
 
 ostream& operator<<(ostream& ofs, const track& obj) {

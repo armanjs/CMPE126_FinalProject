@@ -12,6 +12,7 @@
 #include <iostream>
 #include <string>
 #include "track.h"
+#include "duration.h"
 using namespace std;
 
 class node{
@@ -29,18 +30,18 @@ public:
 	int size = 0;
 	track current;
 
-	playlist();
-	void queue(track sng);
-	void skip(int pos);
-	void move(track sng, int pos); //moves song
-	void previous();
-	void shuffle();
-	void repeat();
-	void print(); //Print playlist
+  playlist();
+  void queue(track sng);
+  void skip(int pos);
+  void move(track sng, int pos); //moves song
+  void previous();
+  void shuffle();
+  void repeat();
+  void print(); //Print playlist
   void addFirst(track sng);
   void addLast(track sng);
   void add(int index, track sng);
-  double duration();
+  duration runTime();
   track getLast();
   track getFirst();
   track findTrack(int index);

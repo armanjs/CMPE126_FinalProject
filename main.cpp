@@ -20,11 +20,11 @@ int main() {
   playlist selections;
 
   //SONG OPTIONS
-  track song1 ("woman", "John lenon", "Double fantasy", 1980, 3.32);
-  track song2 ("Last Christmas", "Wham", "single", 1984, 4.23);
-  track song3 ("Take you dancing", "Jason Derulo", "single", 2020, 3.11);
-  track song4 ("Night Fever", "Bee Gees", "Greatest", 1979, 3.32);
-  track song5 ("Vetement Socks" , "NAV", "Emergency Tsunami", 2020, 2.35);
+  track song1 ("woman", "John lenon", "Double fantasy", 1980, 3,32);
+  track song2 ("Last Christmas", "Wham", "single", 1984, 4,23);
+  track song3 ("Take you dancing", "Jason Derulo", "single", 2020, 3,11);
+  track song4 ("Night Fever", "Bee Gees", "Greatest", 1979, 3,32);
+  track song5 ("Vetement Socks" , "NAV", "Emergency Tsunami", 2020, 2,35);
 
   selections.queue(song1);
   selections.queue(song2);
@@ -79,7 +79,7 @@ int main() {
     case 6:
     cout << "=> Current Playlist" << endl;
     plst.print();
-    cout << "Duration: " << plst.duration() << endl;
+    cout << "Duration: " << plst.runTime() << endl;
     break;
     case 7:
     cout << "Quitting program" << endl; 

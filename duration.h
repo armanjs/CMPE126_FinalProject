@@ -1,3 +1,5 @@
+#ifndef DURATION_H_
+#define DURATION_H_
 #include <iostream>
 using namespace std;
 
@@ -9,7 +11,6 @@ public:
   duration(); // default constructor
   duration(int m, int s);
   // setters
-  void setHour(int h);
   void setMinute(int m);
   void setSecond(int s);
 
@@ -17,3 +18,5 @@ public:
   int minute;
   int second;
 };
+
+#endif /* PLAYLIST_H_ */

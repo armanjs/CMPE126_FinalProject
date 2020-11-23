@@ -6,6 +6,7 @@
  */
 
 #include "playlist.h"
+#include "duration.h"
 
 playlist :: playlist(){
 	head = NULL;
@@ -151,6 +152,7 @@ track playlist::findTrack(int index) {
     }
 } 
 
+/*
 double playlist :: duration(){
   double dur = 0;
   node* temp = head;
@@ -160,6 +162,17 @@ double playlist :: duration(){
     temp = temp->next;
   }
   return dur;
+}*/
+
+duration playlist :: runTime(){
+    node* temp = head;
+    duration totalTime;
+
+    for (int i = 0; i < size; i++){
+        totalTime = totalTime + temp->song.time;
+        temp = temp->next;
+    }
+    return totalTime;
 }
 
 track playlist::getLast(){
