@@ -19,7 +19,7 @@ track :: track(string n, string a, string alb, int y, int min, int sec){
 }
 
 ostream& operator<<(ostream& ofs, const track& obj) {
-    ofs << "'" << obj.name << "' by " << obj.artist 
-    << " in " << obj.album << " (" << obj.year << ") " << endl;
+    ofs << "'" << obj.name << "' by '" << obj.artist 
+    << "' in " << obj.album << " (" << obj.year << ") " << endl;
     return ofs;
 }

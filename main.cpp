@@ -11,8 +11,14 @@
 #include <iostream>
 #include "playlist.h"
 #include "track.h"
+#include <unistd.h>
 
 using namespace std;
+
+void displayTime(int min, int sec){
+    system("clear");
+    cout << min << " : " << sec << endl;
+}
 
 int main() {
   int input;
@@ -25,12 +31,22 @@ int main() {
   track song3 ("Take you dancing", "Jason Derulo", "single", 2020, 3,11);
   track song4 ("Night Fever", "Bee Gees", "Greatest", 1979, 3,32);
   track song5 ("Vetement Socks" , "NAV", "Emergency Tsunami", 2020, 2,35);
+  track song6 ("Clocks", "Coldplay", "A Rush of Blood to the Head", 2002,5,8);
+  track song7 ("Believer", "Imagine Dragons", "Evolve", 2017, 3,24);
+  track song8 ("Papaoutai", "Stromae", "Racine Carree", 2013,3,52);
+  track song9 ("Shout", "Tears for Fears", "Songs From the Big Chair", 1985, 6, 34);
+  track song10("Pump It", "Black Eyed Peas", "Monkey Business", 2005, 3,33);
 
   selections.queue(song1);
   selections.queue(song2);
   selections.queue(song3);
   selections.queue(song4);
   selections.queue(song5);
+  selections.queue(song6);
+  selections.queue(song7);
+  selections.queue(song8);
+  selections.queue(song9);
+  selections.queue(song10);
 
   do{
   cout << "************* Juke Box Menu ***************" << endl;
@@ -86,6 +102,7 @@ int main() {
     break;
     default:
     cout << "Invalid option, please enter a valid number." << endl;
+    break;
     }
   }while(input != 7);
   
