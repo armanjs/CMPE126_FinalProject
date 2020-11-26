@@ -25,6 +25,7 @@ public:
     track(string name, string artist, string alb, int y, int min, int sec); // constructor
 
     friend ostream& operator<<(ostream& ofs, const track& obj);
+    track operator() (string n, string a, string alb, int y, int min, int sec);
     duration time;
 };
 

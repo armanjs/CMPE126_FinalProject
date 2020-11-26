@@ -60,7 +60,7 @@ int main() {
   cout << "* 7. Playlist duration.                   *" << endl;
   cout << "* 8. Search playlist.                     *" << endl;
   cout << "* 9. Remove first song.                   *" << endl;
-  cout << "* 10. Remove last song.                    *" << endl;
+  cout << "* 10. Remove last song.                   *" << endl;
   cout << "* 11. Remove song at specified index.     *" << endl;
   cout << "* -1. Quit program.                       *" << endl;
   cout << "*******************************************" << endl;
