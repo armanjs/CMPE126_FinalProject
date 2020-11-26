@@ -53,8 +53,6 @@ void playlist :: skip(int pos){ //same as delete
   size--;
 }
 
-
-
 //WORK IN PROGRESS
 playlist playlist :: shuffle(){
 int index;
@@ -176,7 +174,6 @@ bool playlist::contains(string name1) {
     }
     return false;
 }
-
 
 /*
 double playlist :: duration(){
