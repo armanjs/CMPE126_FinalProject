@@ -7,6 +7,7 @@
 
 #include "playlist.h"
 #include "duration.h"
+#include <algorithm>
 
 playlist :: playlist(){
 	head = NULL;
@@ -31,6 +32,7 @@ void playlist :: queue(track sng){ //add song to END of playlist
     tail->prev = temp; // link backwards
 }
 
+// not working... check out remove
 void playlist :: skip(int pos){ //same as delete
   //check if pos is within range
   if(pos > size){
@@ -51,51 +53,33 @@ void playlist :: skip(int pos){ //same as delete
   size--;
 }
 
-void playlist :: move(track sng, int index){ //moves song
-if (index == 0){ // if list is empty
-        addFirst(sng);
-    }
-    else if (index >= size){
-        addLast(sng);
-    }
-    else{ // insert somewhere in the middle
-        node* temp = head;
-        // find the correct index
-        for (int i = 1; i < index; i++ ){
-            temp = temp->next;
-        }
-        node* temp1 = temp->next;
-        // create a new node after temp
-        temp->next = new node;
-        // set song to that temp
-        temp->next->song = sng;
-        // link it with the next one
-        (temp->next)->next = temp1;
-        size++; // increment the size
-        // link backwards
-        temp1->prev = temp->next;
-        temp->next->prev = temp;
-    }
-}
 
-void playlist :: shuffle(){
 
-}
+//WORK IN PROGRESS
+playlist playlist :: shuffle(){
+int index;
+track sng;
+playlist shuffled;
 
-void playlist :: repeat(){
-
+for(int i = 0; i < size; i++){
+  sng = findTrack(i);
+  index = rand() % size;
+    cout << "Moving " << sng << " to " << index; 
+    shuffled.add(sng, index);
+  }
+return shuffled;
 }
 
 void playlist::print(){
   int n = 1;
   node* temp = head;
   while (temp != NULL){
-      cout << n << ") " << temp->song;
+      cout << n << ". " << temp->song;
       temp = temp->next;
       n++;
   }
   if (size == 0){
-      cout << "List is empty." << endl;
+      cout << "No songs in playlist." << endl;
   }
 }
 
@@ -137,6 +121,36 @@ void playlist::addLast(track sng) {
     tail->prev = temp; // link backwards
 }
 
+//fixed
+void playlist :: add(track sng, int index){ //moves song
+index = index - 1;
+if (index == 0){ // if list is empty
+        addFirst(sng);
+    }
+    else if (index >= size){
+        addLast(sng);
+    }
+    else{ // insert somewhere in the middle
+        node* current = head;
+        // find the correct index
+        for (int i = 1; i < index; i++ ){
+            current = current->next;
+        }
+        node* temp = current->next;
+        // create a new node after temp
+        current->next = new node;
+        // set song to that temp
+        current->next->song = sng;
+        // link it with the next one
+        (current->next)->next = temp;
+        size++; // increment the size
+        // link backwards
+        temp->prev = current->next;
+        current->next->prev = current;
+    }
+    cout << "Adding " << sng << " to " << index << endl;
+}
+
 track playlist::findTrack(int index) {
     node* temp = head;
     for (int i = 0; i < index ; ++i) {
@@ -151,6 +165,18 @@ track playlist::findTrack(int index) {
       return t1; // connot return NULL smh
     }
 } 
+
+bool playlist::contains(string name1) {
+    node* temp = head;
+    while (temp != NULL){
+        if (name1 == temp->song.name) {
+            return true;
+        }
+        temp = temp->next;
+    }
+    return false;
+}
+
 
 /*
 double playlist :: duration(){
@@ -181,4 +207,73 @@ track playlist::getLast(){
 
 track playlist::getFirst(){
   return head->song;
+}
+
+track playlist::removeFirst() {
+    if (size == 0){
+        track trk;
+        cout << "list is empty" << endl;
+        return trk;
+    }
+    else {
+        node* temp = head;
+        head = head->next;
+        size--;
+        if (head == NULL){
+            tail = NULL;
+        }
+        return temp->song;
+    }
+}
+
+track playlist::removeLast() {
+    if (size == 0){ // if nothing to remove
+        track trk;
+        cout << "list is empty" << endl;
+        return trk;
+    }
+    else if (size == 1){
+        node* temp = head;
+        head = tail = NULL;
+        size = 0;
+        return temp->song;
+    }
+    else {
+        node* current = head;
+        for (int i = 0; i < size - 2; i++){
+            current = current->next;
+        }
+        node* temp = tail;
+        tail = current;
+        tail->next = NULL;
+        size--;
+        return temp->song;
+    }
+    //return track();
+}
+
+track playlist::remove(int index) {
+  index = index - 1;
+    if (index < 0 || index >= size){
+        cout << "index out of bounds" << endl;
+        track trk;
+        return trk;
+    }
+    if (index == 0){
+        return removeFirst();
+    }
+    else if (index == size - 1){
+       return removeLast();
+    }
+    else {
+        node* previous = head;
+        for (int i = 1; i < index; i++){
+            previous = previous->next;
+        }
+        node* current = previous->next;
+        previous->next = current->next;
+        current->next->prev = previous;
+        size--;
+        return current->song;
+    }
 }

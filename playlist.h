@@ -33,9 +33,9 @@ public:
   playlist();
   void queue(track sng);
   void skip(int pos);
-  void move(track sng, int pos); //moves song
+  void add(track sng, int pos);
   void previous();
-  void shuffle();
+  playlist shuffle();
   void repeat();
   void print(); //Print playlist
   void addFirst(track sng);
@@ -45,6 +45,10 @@ public:
   track getLast();
   track getFirst();
   track findTrack(int index);
+  bool contains(string name1);
+  track removeFirst();
+  track removeLast();
+  track remove(int index);
 };
 
 #endif /* PLAYLIST_H_ */

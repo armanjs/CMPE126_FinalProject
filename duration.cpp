@@ -36,7 +36,6 @@ duration::duration(int m, int s) {
 }
 
 // define the setters
-
 void duration::setMinute(int m) {
   minute = m;
 }

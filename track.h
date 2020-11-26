@@ -14,12 +14,13 @@
 using namespace std;
 
 class track {
-    string name;
+    
     string artist;
     string album;
     int year;
 
 public:
+    string name;
     track(); // default constructor
     track(string name, string artist, string alb, int y, int min, int sec); // constructor
 
