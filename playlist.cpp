@@ -32,28 +32,6 @@ void playlist :: queue(track sng){ //add song to END of playlist
     tail->prev = temp; // link backwards
 }
 
-// not working... check out remove
-void playlist :: skip(int pos){ //same as delete
-  //check if pos is within range
-  if(pos > size){
-    cout << "Error: Invalid position." << endl;
-    exit(1);
-  }
-  node* newNode = new node;
-  newNode = head;
-
-  for(int i = 0; i < pos - 1; i++){
-    newNode = newNode->next;
-  }
-
-  newNode->prev->next = newNode->next;
-  newNode->next->prev = newNode->prev;
-
-  delete newNode;
-  size--;
-}
-
-//WORK IN PROGRESS
 playlist playlist :: shuffle(){
 int index;
 track sng;
@@ -62,7 +40,6 @@ playlist shuffled;
 for(int i = 0; i < size; i++){
   sng = findTrack(i);
   index = rand() % size;
-    cout << "Moving " << sng << " to " << index; 
     shuffled.add(sng, index);
   }
 return shuffled;
@@ -80,6 +57,7 @@ void playlist::print(){
       cout << "No songs in playlist." << endl;
   }
 }
+
 
 void playlist::addFirst(track sng){
   // create a new node
@@ -119,13 +97,13 @@ void playlist::addLast(track sng) {
     tail->prev = temp; // link backwards
 }
 
-//fixed
 void playlist :: add(track sng, int index){ //moves song
 index = index - 1;
 if (index == 0){ // if list is empty
         addFirst(sng);
     }
     else if (index >= size){
+        cout << "Index is larger than size of playlist. Adding song to end of playlist" << endl;
         addLast(sng);
     }
     else{ // insert somewhere in the middle
@@ -145,12 +123,13 @@ if (index == 0){ // if list is empty
         // link backwards
         temp->prev = current->next;
         current->next->prev = current;
+        cout << "Adding " << sng << " to " << index << endl;
     }
-    cout << "Adding " << sng << " to " << index << endl;
 }
 
 track playlist::findTrack(int index) {
     node* temp = head;
+    bool found = false;
     for (int i = 0; i < index ; ++i) {
         temp = temp->next;
     }
@@ -159,7 +138,7 @@ track playlist::findTrack(int index) {
     }
     else {
       track t1;
-      cout << "track not found" << endl;
+      cout << "Track not found" << endl;
       return t1; // connot return NULL smh
     }
 } 
@@ -174,18 +153,6 @@ bool playlist::contains(string name1) {
     }
     return false;
 }
-
-/*
-double playlist :: duration(){
-  double dur = 0;
-  node* temp = head;
-
-  for(int i = 0; i < size; i++){
-    dur = dur + temp->song.duration;
-    temp = temp->next;
-  }
-  return dur;
-}*/
 
 duration playlist :: runTime(){
     node* temp = head;

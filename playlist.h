@@ -38,6 +38,7 @@ public:
   playlist shuffle();
   void repeat();
   void print(); //Print playlist
+  void printCatalog(); //prints catalog layout
   void addFirst(track sng);
   void addLast(track sng);
   void add(int index, track sng);
@@ -45,6 +46,7 @@ public:
   track getLast();
   track getFirst();
   track findTrack(int index);
+  bool search(track* head, track song);
   bool contains(string name1);
   track removeFirst();
   track removeLast();
