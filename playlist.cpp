@@ -123,7 +123,7 @@ if (index == 0){ // if list is empty
         // link backwards
         temp->prev = current->next;
         current->next->prev = current;
-        cout << "Adding " << sng << " to " << index << endl;
+        // cout << "Adding " << sng << " to " << index << endl;
     }
 }
 
